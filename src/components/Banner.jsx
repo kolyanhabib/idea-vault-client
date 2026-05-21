@@ -63,7 +63,7 @@ export default function BannerSection() {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative h-[420px] overflow-hidden sm:h-[520px] md:h-[620px] lg:h-[720px] xl:h-[820px]">
+            <div className="relative h-125 overflow-hidden sm:h-130 md:h-155 lg:h-180 xl:h-205">
               {/* IMAGE */}
               <Image
                 src={slide.image}
@@ -78,7 +78,7 @@ export default function BannerSection() {
               <div className="absolute inset-0 bg-black/60" />
 
               {/* GRADIENT */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0B1020]/95 via-[#0B1020]/70 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-[#0B1020]/95 via-[#0B1020]/70 to-transparent" />
 
               {/* CONTENT */}
               <div className="relative z-10 flex h-full items-center">
