@@ -10,7 +10,7 @@ export default function Loading() {
 
         {/* CENTER */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="h-6 w-6 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 shadow-[0_0_25px_rgba(139,92,246,.45)]" />
+          <div className="h-6 w-6 rounded-full bg-linear-to-r from-violet-500 to-cyan-500 shadow-[0_0_25px_rgba(139,92,246,.45)]" />
         </div>
       </div>
     </section>
