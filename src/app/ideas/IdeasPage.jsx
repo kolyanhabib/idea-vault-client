@@ -7,6 +7,7 @@ import IdeaCard from "@/components/IdeaCard";
 import { Search } from "lucide-react";
 
 import { FcIdea } from "react-icons/fc";
+
 const IdeasPage = () => {
   const [allIdeas, setAllIdeas] = useState([]);
 
