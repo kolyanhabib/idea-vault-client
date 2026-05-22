@@ -85,18 +85,22 @@ const MyIdeasPage = () => {
   };
 
   return (
-    <section className="min-h-screen bg-slate-50 py-24 transition-colors duration-300 dark:bg-[#020617]">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="min-h-screen bg-slate-50 py-12 sm:py-16 lg:py-24 transition-colors duration-300 dark:bg-[#020617]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        {/* Header */}
         <MyIdeasHeader />
 
+        {/* Loading */}
         {loading ? (
-          <div className="flex min-h-75 items-center justify-center">
-            <div className="h-14 w-14 animate-spin rounded-full border-4 border-violet-200 border-t-violet-600 dark:border-violet-900 dark:border-t-violet-400"></div>
+          <div className="flex min-h-[300px] sm:min-h-[400px] items-center justify-center">
+            <div className="h-12 w-12 sm:h-14 sm:w-14 animate-spin rounded-full border-4 border-violet-200 border-t-violet-600 dark:border-violet-900 dark:border-t-violet-400"></div>
           </div>
         ) : ideas.length === 0 ? (
+          /* Empty State */
           <EmptyState />
         ) : (
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          /* Ideas Grid */
+          <div className="grid gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {ideas.map((idea) => (
               <MyIdeaCard
                 key={idea._id}
@@ -109,6 +113,7 @@ const MyIdeasPage = () => {
         )}
       </div>
 
+      {/* Edit Modal */}
       {editingIdea && (
         <EditIdeaModal
           editingIdea={editingIdea}
