@@ -368,32 +368,32 @@ export default function IdeaDetailsPage() {
         </div>
 
         {/* COMMENTS */}
-        <div className="mt-10 rounded-4xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-8">
+        <div className="mt-8 sm:mt-10 rounded-[24px] sm:rounded-4xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-8">
           {/* HEADER */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-start sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
                 Comments ({comments.length})
               </h2>
 
-              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+              <p className="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                 People shared their thoughts
               </p>
             </div>
 
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-100 dark:bg-violet-950/40">
+            <div className="flex h-11 w-11 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-violet-100 dark:bg-violet-950/40">
               <MessageCircle
-                size={26}
-                className="text-violet-700 dark:text-violet-400"
+                size={22}
+                className="text-violet-700 dark:text-violet-400 sm:size-[26px]"
               />
             </div>
           </div>
 
           {/* COMMENT BOX */}
-          <div className="mt-8 rounded-[30px] border border-slate-200 bg-linear-to-br from-violet-50 via-white to-fuchsia-50 p-5 dark:border-slate-700 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 md:p-6">
+          <div className="mt-6 sm:mt-8 rounded-[22px] sm:rounded-[30px] border border-slate-200 bg-linear-to-br from-violet-50 via-white to-fuchsia-50 p-4 sm:p-5 dark:border-slate-700 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 md:p-6">
             {/* USER */}
-            <div className="mb-5 flex items-center gap-3">
-              <div className="relative h-12 w-12 overflow-hidden rounded-full ring-2 ring-violet-200 dark:ring-violet-900">
+            <div className="mb-4 sm:mb-5 flex items-center gap-3">
+              <div className="relative h-10 w-10 sm:h-12 sm:w-12 overflow-hidden rounded-full ring-2 ring-violet-200 dark:ring-violet-900">
                 <Image
                   src={
                     session?.user?.image ||
@@ -407,11 +407,11 @@ export default function IdeaDetailsPage() {
               </div>
 
               <div>
-                <h4 className="font-bold text-slate-900 dark:text-white">
+                <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                   {session?.user?.name || "Guest User"}
                 </h4>
 
-                <p className="text-sm text-slate-500 dark:text-slate-400">
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                   Share your thoughts
                 </p>
               </div>
@@ -423,20 +423,20 @@ export default function IdeaDetailsPage() {
               onChange={(e) => setCommentText(e.target.value)}
               rows={5}
               placeholder="Write your comment here..."
-              className="w-full resize-none rounded-3xl border border-slate-200 bg-white p-5 text-[15px] leading-7 text-slate-700 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-violet-400 focus:ring-4 focus:ring-violet-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-violet-900"
+              className="w-full resize-none rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-4 sm:p-5 text-sm sm:text-[15px] leading-7 text-slate-700 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-violet-400 focus:ring-4 focus:ring-violet-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-violet-900"
             />
 
             {/* ACTIONS */}
-            <div className="mt-5 flex items-center justify-between">
-              <p className="text-sm text-slate-400 dark:text-slate-500">
+            <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs sm:text-sm text-slate-400 dark:text-slate-500">
                 Be respectful and constructive.
               </p>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 {editingId && (
                   <button
                     onClick={cancelEdit}
-                    className="rounded-2xl border border-red-200 bg-red-50 px-5 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-100 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400"
+                    className="rounded-xl sm:rounded-2xl border border-red-200 bg-red-50 px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-red-600 transition hover:bg-red-100 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400"
                   >
                     Cancel
                   </button>
@@ -445,7 +445,7 @@ export default function IdeaDetailsPage() {
                 <button
                   disabled={commentLoading}
                   onClick={editingId ? handleUpdate : handleComment}
-                  className="flex items-center gap-2 rounded-2xl bg-linear-to-r from-violet-600 to-fuchsia-600 px-6 py-3 font-semibold text-white shadow-lg shadow-violet-200 transition-all duration-300 hover:scale-[1.02]"
+                  className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl sm:rounded-2xl bg-linear-to-r from-violet-600 to-fuchsia-600 px-5 sm:px-6 py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-violet-200 transition-all duration-300 hover:scale-[1.02]"
                 >
                   {editingId ? (
                     <>
@@ -466,15 +466,15 @@ export default function IdeaDetailsPage() {
           </div>
 
           {/* COMMENTS LIST */}
-          <div className="mt-8 space-y-5">
+          <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-5">
             {comments.map((comment) => (
               <div
                 key={comment._id}
-                className="rounded-[28px] border border-slate-200 bg-slate-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:bg-white hover:shadow-lg dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-900"
+                className="rounded-[22px] sm:rounded-[28px] border border-slate-200 bg-slate-50 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:bg-white hover:shadow-lg dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-900"
               >
-                <div className="flex gap-4">
+                <div className="flex gap-3 sm:gap-4">
                   {/* PROFILE */}
-                  <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-violet-100 dark:ring-violet-900">
+                  <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-violet-100 dark:ring-violet-900">
                     <Image
                       src={
                         comment.userImage ||
@@ -488,23 +488,21 @@ export default function IdeaDetailsPage() {
                   </div>
 
                   {/* CONTENT */}
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <h3 className="text-[17px] font-bold text-slate-900 dark:text-white">
+                        <h3 className="text-sm sm:text-[17px] font-bold text-slate-900 dark:text-white">
                           {comment.userName}
                         </h3>
 
-                        <div className="mt-1 flex items-center gap-2 text-sm text-slate-400 dark:text-slate-500">
+                        <div className="mt-1 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-400 dark:text-slate-500">
                           <CalendarDays size={14} />
 
                           {new Date(comment.createdAt).toLocaleDateString(
                             "en-US",
                             {
                               year: "numeric",
-
                               month: "long",
-
                               day: "numeric",
                             },
                           )}
@@ -516,14 +514,14 @@ export default function IdeaDetailsPage() {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleEdit(comment)}
-                            className="rounded-xl bg-blue-100 p-2 text-blue-600 transition hover:bg-blue-200 dark:bg-blue-950/40 dark:text-blue-400"
+                            className="rounded-lg sm:rounded-xl bg-blue-100 p-2 text-blue-600 transition hover:bg-blue-200 dark:bg-blue-950/40 dark:text-blue-400"
                           >
                             <Pencil size={16} />
                           </button>
 
                           <button
                             onClick={() => handleDelete(comment._id)}
-                            className="rounded-xl bg-red-100 p-2 text-red-600 transition hover:bg-red-200 dark:bg-red-950/40 dark:text-red-400"
+                            className="rounded-lg sm:rounded-xl bg-red-100 p-2 text-red-600 transition hover:bg-red-200 dark:bg-red-950/40 dark:text-red-400"
                           >
                             <Trash2 size={16} />
                           </button>
@@ -532,8 +530,8 @@ export default function IdeaDetailsPage() {
                     </div>
 
                     {/* COMMENT TEXT */}
-                    <div className="mt-4 rounded-2xl bg-white p-4 dark:bg-slate-900">
-                      <p className="leading-8 text-slate-700 dark:text-slate-300">
+                    <div className="mt-4 rounded-xl sm:rounded-2xl bg-white p-3 sm:p-4 dark:bg-slate-900">
+                      <p className="text-sm sm:text-base leading-7 sm:leading-8 break-words text-slate-700 dark:text-slate-300">
                         {comment.text}
                       </p>
                     </div>
