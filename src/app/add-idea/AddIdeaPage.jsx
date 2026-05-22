@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
-
 import toast from "react-hot-toast";
 
 import { authClient } from "@/lib/auth-client";
@@ -21,37 +19,26 @@ import {
 export default function AddIdeaPage() {
   const router = useRouter();
 
-  // SESSION
   const { data: session } = authClient.useSession();
 
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
-
     shortDescription: "",
-
     detailedDescription: "",
-
     category: "",
-
     tags: "",
-
     imageURL: "",
-
     estimatedBudget: "",
-
     targetAudience: "",
-
     problemStatement: "",
-
     proposedSolution: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-
       [e.target.name]: e.target.value,
     });
   };
@@ -59,7 +46,6 @@ export default function AddIdeaPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // LOGIN CHECK
     if (!session?.user) {
       toast.error("Please login first");
 
@@ -91,7 +77,6 @@ export default function AddIdeaPage() {
 
       proposedSolution: formData.proposedSolution,
 
-      // AUTHOR INFO
       author: session.user.name,
 
       profile: session.user.image,
@@ -119,23 +104,14 @@ export default function AddIdeaPage() {
 
         setFormData({
           title: "",
-
           shortDescription: "",
-
           detailedDescription: "",
-
           category: "",
-
           tags: "",
-
           imageURL: "",
-
           estimatedBudget: "",
-
           targetAudience: "",
-
           problemStatement: "",
-
           proposedSolution: "",
         });
 
@@ -153,37 +129,37 @@ export default function AddIdeaPage() {
   };
 
   return (
-    <section className="min-h-screen bg-slate-50 py-24 transition-colors duration-300 dark:bg-[#020617]">
-      <div className="mx-auto max-w-5xl px-6">
-        {/* HEADER */}
-        <div className="mb-14 text-center">
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-5 py-2 text-sm font-semibold text-violet-700 dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-300">
-            <Sparkles size={16} />
+    <section className="min-h-screen bg-slate-50 py-12 sm:py-16 lg:py-24 transition-colors duration-300 dark:bg-[#020617]">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        {/* Header */}
+        <div className="mb-10 sm:mb-14 text-center">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-xs sm:text-sm font-semibold text-violet-700 dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-300">
+            <Sparkles size={15} />
             Startup Submission
           </p>
 
-          <h1 className="text-5xl font-black tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
             Submit Your Startup Idea
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-500 dark:text-slate-400">
+          <p className="mx-auto mt-4 sm:mt-5 max-w-2xl text-sm sm:text-base md:text-lg leading-7 sm:leading-8 text-slate-500 dark:text-slate-400">
             Share your innovative startup concept with the community and inspire
             future creators.
           </p>
         </div>
 
-        {/* FORM */}
+        {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="space-y-8 rounded-[40px] border border-slate-200 bg-white p-8 shadow-xl transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 md:p-12"
+          className="space-y-6 sm:space-y-8 rounded-[24px] sm:rounded-[40px] border border-slate-200 bg-white p-4 sm:p-6 md:p-8 lg:p-12 shadow-xl transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900"
         >
-          {/* TITLE */}
+          {/* Title */}
           <div>
             <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
               Idea Title
             </label>
 
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
+            <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3.5 sm:py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
               <Lightbulb size={20} className="text-violet-600" />
 
               <input
@@ -193,12 +169,12 @@ export default function AddIdeaPage() {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Enter startup idea title"
-                className="w-full bg-transparent text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
+                className="w-full bg-transparent text-sm sm:text-base text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
               />
             </div>
           </div>
 
-          {/* SHORT DESCRIPTION */}
+          {/* Short Description */}
           <div>
             <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
               Short Description
@@ -211,11 +187,11 @@ export default function AddIdeaPage() {
               value={formData.shortDescription}
               onChange={handleChange}
               placeholder="Write short description..."
-              className="w-full rounded-2xl border border-slate-200 bg-slate-50 p-5 text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
+              className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5 text-sm sm:text-base text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
             />
           </div>
 
-          {/* DETAILED DESCRIPTION */}
+          {/* Detailed Description */}
           <div>
             <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
               Detailed Description
@@ -228,19 +204,19 @@ export default function AddIdeaPage() {
               value={formData.detailedDescription}
               onChange={handleChange}
               placeholder="Write detailed startup idea..."
-              className="w-full rounded-2xl border border-slate-200 bg-slate-50 p-5 text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
+              className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5 text-sm sm:text-base text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
             />
           </div>
 
-          {/* GRID */}
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* CATEGORY */}
+          {/* Grid */}
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
+            {/* Category */}
             <div>
               <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
                 Category
               </label>
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
+              <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3.5 sm:py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
                 <Layers size={20} className="text-violet-600" />
 
                 <select
@@ -248,28 +224,24 @@ export default function AddIdeaPage() {
                   name="category"
                   value={formData.category}
                   onChange={handleChange}
-                  className="w-full bg-transparent text-slate-700 outline-none dark:text-white"
+                  className="w-full bg-transparent text-sm sm:text-base text-slate-700 outline-none dark:text-white"
                 >
                   <option value="">Select Category</option>
-
                   <option>AI</option>
-
                   <option>Education</option>
-
                   <option>Health</option>
-
                   <option>Tech</option>
                 </select>
               </div>
             </div>
 
-            {/* TAGS */}
+            {/* Tags */}
             <div>
               <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
                 Tags
               </label>
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
+              <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3.5 sm:py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
                 <Tags size={20} className="text-violet-600" />
 
                 <input
@@ -279,18 +251,18 @@ export default function AddIdeaPage() {
                   value={formData.tags}
                   onChange={handleChange}
                   placeholder="AI, Startup, SaaS"
-                  className="w-full bg-transparent text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
+                  className="w-full bg-transparent text-sm sm:text-base text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
 
-            {/* IMAGE URL */}
+            {/* Image URL */}
             <div>
               <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
                 Image URL
               </label>
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
+              <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3.5 sm:py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
                 <ImageIcon size={20} className="text-violet-600" />
 
                 <input
@@ -300,18 +272,18 @@ export default function AddIdeaPage() {
                   value={formData.imageURL}
                   onChange={handleChange}
                   placeholder="https://images.unsplash.com/..."
-                  className="w-full bg-transparent text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
+                  className="w-full bg-transparent text-sm sm:text-base text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
 
-            {/* BUDGET */}
+            {/* Budget */}
             <div>
               <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
                 Estimated Budget
               </label>
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
+              <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3.5 sm:py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
                 <DollarSign size={20} className="text-violet-600" />
 
                 <input
@@ -321,19 +293,19 @@ export default function AddIdeaPage() {
                   value={formData.estimatedBudget}
                   onChange={handleChange}
                   placeholder="$20,000"
-                  className="w-full bg-transparent text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
+                  className="w-full bg-transparent text-sm sm:text-base text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
                 />
               </div>
             </div>
           </div>
 
-          {/* TARGET AUDIENCE */}
+          {/* Target Audience */}
           <div>
             <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
               Target Audience
             </label>
 
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
+            <div className="flex items-center gap-3 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3.5 sm:py-4 transition-all focus-within:border-violet-300 focus-within:bg-white dark:border-slate-700 dark:bg-slate-800 dark:focus-within:bg-slate-900">
               <Users size={20} className="text-violet-600" />
 
               <input
@@ -343,12 +315,12 @@ export default function AddIdeaPage() {
                 value={formData.targetAudience}
                 onChange={handleChange}
                 placeholder="Students"
-                className="w-full bg-transparent text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
+                className="w-full bg-transparent text-sm sm:text-base text-slate-700 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
               />
             </div>
           </div>
 
-          {/* PROBLEM */}
+          {/* Problem Statement */}
           <div>
             <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
               Problem Statement
@@ -361,11 +333,11 @@ export default function AddIdeaPage() {
               value={formData.problemStatement}
               onChange={handleChange}
               placeholder="Describe the problem..."
-              className="w-full rounded-2xl border border-slate-200 bg-slate-50 p-5 text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
+              className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5 text-sm sm:text-base text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
             />
           </div>
 
-          {/* SOLUTION */}
+          {/* Proposed Solution */}
           <div>
             <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
               Proposed Solution
@@ -378,17 +350,17 @@ export default function AddIdeaPage() {
               value={formData.proposedSolution}
               onChange={handleChange}
               placeholder="Describe your solution..."
-              className="w-full rounded-2xl border border-slate-200 bg-slate-50 p-5 text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
+              className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5 text-sm sm:text-base text-slate-700 outline-none transition-all focus:border-violet-300 focus:bg-white placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:bg-slate-900 dark:placeholder:text-slate-500"
             />
           </div>
 
-          {/* SUBMIT BTN */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-2xl bg-linear-to-r from-violet-600 to-fuchsia-600 py-5 text-lg font-semibold text-white shadow-lg shadow-violet-500/20 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
+            className="w-full rounded-xl sm:rounded-2xl bg-linear-to-r from-violet-600 to-fuchsia-600 py-4 sm:py-5 text-base sm:text-lg font-semibold text-white shadow-lg shadow-violet-500/20 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {loading ? "Submitting..." : "Submit Startup Idea 🚀"}
+            {loading ? "Submitting..." : "Submit Startup Idea "}
           </button>
         </form>
       </div>
