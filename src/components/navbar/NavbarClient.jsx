@@ -164,7 +164,7 @@ const NavbarClient = () => {
             </button>
 
             <div
-              className={`absolute right-0 top-16 w-72 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl transition-all duration-300 dark:border-slate-700 dark:bg-slate-900 ${
+              className={`absolute right-0 top-16 w-72 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl transition-all duration-300 dark:border-slate-700 dark:bg-slate-900  ${
                 dropdownOpen
                   ? "visible translate-y-0 opacity-100"
                   : "invisible -translate-y-4 opacity-0"
