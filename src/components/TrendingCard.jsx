@@ -118,7 +118,7 @@ const TrendingCard = ({ feature }) => {
           width={600}
           height={400}
           sizes="(max-width:768px) 100vw, 33vw"
-          className="h-60 w-full object-cover transition duration-700 group-hover:scale-110"
+          className="h-44 sm:h-52 md:h-60 w-full object-cover transition duration-700 group-hover:scale-110"
         />
 
         <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-transparent" />
@@ -128,24 +128,24 @@ const TrendingCard = ({ feature }) => {
         </div>
       </div>
 
-      <div className="flex h-117.5 flex-col p-6">
+      <div className="flex flex-col p-4 sm:p-5 md:p-6">
         <div>
-          <h2 className="text-2xl font-black leading-tight tracking-tight text-slate-900 transition duration-300 group-hover:text-violet-700 dark:text-white dark:group-hover:text-violet-400">
+          <h2 className="text-xl sm:text-2xl font-black leading-tight tracking-tight text-slate-900 transition duration-300 group-hover:text-violet-700 dark:text-white dark:group-hover:text-violet-400">
             {title}
           </h2>
 
-          <p className="mt-4 line-clamp-3 text-[15px] leading-7 text-slate-600 dark:text-slate-400">
+          <p className="mt-3 line-clamp-3 text-sm sm:text-[15px] leading-6 sm:leading-7 text-slate-600 dark:text-slate-400">
             {shortDescription}
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-2">
             {tags?.map((tag, index) => {
               const Icon = tagIcons[tag];
 
               return (
                 <div
                   key={index}
-                  className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 hover:border-violet-200 hover:bg-violet-50 hover:text-violet-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-violet-700 dark:hover:bg-violet-950/40 dark:hover:text-violet-300"
+                  className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs sm:text-sm font-medium text-slate-700 transition-all duration-300 hover:border-violet-200 hover:bg-violet-50 hover:text-violet-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-violet-700 dark:hover:bg-violet-950/40 dark:hover:text-violet-300"
                 >
                   {Icon && (
                     <Icon
@@ -160,14 +160,14 @@ const TrendingCard = ({ feature }) => {
             })}
           </div>
 
-          <div className="mt-7 flex items-center gap-5">
+          <div className="mt-7 flex items-center justify-between gap-2.5">
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
-                <GrGroup className="text-[15px]" />
+                <GrGroup size={15} />
               </div>
 
               <div>
-                <p className="text-xs font-medium text-slate-400 dark:text-slate-500">
+                <p className="text- font-medium text-slate-400 dark:text-slate-500">
                   Audience
                 </p>
 
@@ -177,9 +177,9 @@ const TrendingCard = ({ feature }) => {
               </div>
             </div>
 
-            <div className="h-10 w-px bg-slate-200 dark:bg-slate-700" />
+            <div className="h-10 w-px bg-slate-200 dark:bg-slate-700 mr-1" />
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">
                 <Wallet size={17} />
               </div>
@@ -227,7 +227,7 @@ const TrendingCard = ({ feature }) => {
           </div>
         </div>
 
-        <div className="mt-auto pt-7">
+        <div className="pt-6 mt-6">
           <Link href={`/ideas/${_id}`}>
             <button className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl border border-violet-200 bg-violet-50 px-5 py-3.5 text-sm font-semibold text-violet-700 transition-all duration-300 hover:bg-violet-600 hover:text-white dark:border-violet-800 dark:bg-violet-950/30 dark:text-violet-300 dark:hover:bg-violet-600 dark:hover:text-white">
               <span>View Details</span>

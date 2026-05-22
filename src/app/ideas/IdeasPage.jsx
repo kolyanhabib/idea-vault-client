@@ -71,7 +71,7 @@ const IdeasPage = () => {
   }, [search, selectedCategory, allIdeas]);
 
   return (
-    <section className="min-h-screen bg-[#F8FAFC] py-24 transition-colors duration-300 dark:bg-[#020617]">
+    <section className="min-h-[calc(100vh-5rem)] bg-[#F8FAFC] py-24 transition-colors duration-300 dark:bg-[#020617]">
       <div className="mx-auto max-w-7xl px-5">
         {/* HEADER */}
         <div className="mb-16">
